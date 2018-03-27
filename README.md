@@ -5,7 +5,7 @@ A python app which shows sensitive data to authorised faces. It was created to t
 
 Follow these instructions to get the project up and running on your local machine.
 
-###Installing
+### Installing
 
 Python 2.7
 
