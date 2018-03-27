@@ -5,9 +5,7 @@ Detect recorded face and authorises app to show data
 """
 
 import cv2
-
-#Importing custom modules
-from src import sql_connector
+import sql_connector
 
 def authorise():
 
@@ -39,11 +37,10 @@ def authorise():
             ID, conf = rec.predict(gray[y:y+h, x:x+w])
 
             #Retrieves name from database and prints it at (x, y+h)
-            name = sql_connector.retrieve(ID)
             cv2.putText(frame, name, (x,y+h), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 255))
 
             #Authorise if authorised person
-            if name == "Shubham":
+            if name == "Shreyas":
                 isAuthorised = True
 
         #Display frame

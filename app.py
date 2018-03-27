@@ -16,11 +16,16 @@ class UnlockScreen(Screen):
         isAuthorised = authorise()
         if isAuthorised:
             self.parent.current = 'data'
+        else:
+            self.parent.current = 'unauthorised'
 
 """
 Defines screen shown on successful login
 """
 class DataScreen(Screen):
+    pass
+
+class Unauthorised(Screen):
     pass
 
 """
@@ -36,6 +41,7 @@ AppScreenManager:
     transition: FadeTransition()
     UnlockScreen:
     DataScreen:
+    Unauthorised:
 <UnlockScreen>:
     name: 'unlock'
     BoxLayout:
@@ -68,6 +74,24 @@ AppScreenManager:
                 orientation: 'vertical'
                 Button:
                     text: 'Lock again'
+                    font_size: 30
+                    on_release: app.root.current = 'unlock'
+                BoxLayout:
+            BoxLayout:
+<Unauthorised>:
+    name: 'unauthorised'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Unauthorised face'
+            font_size: 50
+        BoxLayout:
+            orientation: 'horizontal'
+            BoxLayout:
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Go back'
                     font_size: 30
                     on_release: app.root.current = 'unlock'
                 BoxLayout:

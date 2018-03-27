@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-#Importing custom modules
+#Custom imports
 import sql_connector
 
 #Create facedetect object
@@ -10,12 +10,12 @@ faceDetect = cv2.CascadeClassifier('haar-cascades/haarcascade_frontalface_defaul
 #Catpure video from webcam
 cam=cv2.VideoCapture(0)
 
-#Insert name into DB and return ID
-name=input('Enter name: ')
+#Get user's name, save to DB and get ID
+name = raw_input('Enter name: ')
 id = sql_connector.insert(name)
 
+#Start recognition
 sampleNumber=0
-
 while(True):
     ret, img = cam.read()
     
